@@ -1,12 +1,15 @@
 
 import './App.css'
 import Button from './components/Button/Button'
+import TextInputForm from './components/TextInputForm/TextInputForm'
+import TextInputFormContainer from './components/TextInputForm/TextInputFormContainer'
 
 function App() {
 
   return (
     <>
-      <Button text="Click me" onClickHandler={() => console.log("Button clicked")}/>
+
+      <TextInputFormContainer />
     </>
   )
 }
