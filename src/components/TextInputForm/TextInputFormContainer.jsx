@@ -3,13 +3,15 @@ import React, { useState } from "react";
 const TextInputFormContainer = () => {
 
     const [inputType, setInputType] = useState("password");
+    const [value, setValue] = useState("");
 
     const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    console.log("Form submitted:", value);
   };
 
   const handleTextInputChange = (e) => {
+    setValue(e.target.value);
     console.log("Text input changed:", e.target.value);
   };
 
