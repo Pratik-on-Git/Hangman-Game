@@ -14,7 +14,7 @@ const TextInputFormContainer = () => {
     if (value) {
       // Navigate to the play page if the value is valid
         setTimeout(() => {
-            navigate("/play");
+            navigate(`/play?text=${value}`);
         }, 3000);
     }
   };
