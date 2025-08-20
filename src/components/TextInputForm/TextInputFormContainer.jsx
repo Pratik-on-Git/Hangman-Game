@@ -1,6 +1,6 @@
 import TextInputForm from "./TextInputForm";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 const TextInputFormContainer = () => {
 
     const [inputType, setInputType] = useState("password");
@@ -18,6 +18,10 @@ const TextInputFormContainer = () => {
         }, 3000);
     }
   };
+
+  useEffect(() => {
+    console.log("Component Loaded");
+  }, [value]);
 
   const handleTextInputChange = (e) => {
     setValue(e.target.value);
@@ -44,5 +48,4 @@ const TextInputFormContainer = () => {
     </div>
   );
 };
-
 export default TextInputFormContainer;
