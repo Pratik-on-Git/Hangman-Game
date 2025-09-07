@@ -1,17 +1,23 @@
 
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import MaskedText from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
 import HangMan from "../components/HangMan/HangMan";
+import { useContext } from "react";
+import WordContext from "../context/WordContext.js";
 
 const PlayGame = () => {
-  const {state} = useLocation();
+  // const {state} = useLocation();
+
+  const { wordList, word } = useContext(WordContext);
+
+
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [step, setStep] = useState(0);
   
   function handleLetterClick(letter) {
-    if (state?.wordSelected?.toUpperCase().includes(letter)) {
+    if (word?.toUpperCase().includes(letter)) {
       console.log("Correct guess:", letter);
     } else {
       setStep(step + 1);
@@ -24,12 +30,18 @@ const PlayGame = () => {
   return (
     <>
       <h1>Play Game</h1>
-      {state?.wordSelected && (
+
+      {wordList.map((word, index) => (
+        <li key={index}>{word.toUpperCase()}</li>
+      ))}
+
+
+      {word && (
         <>
-          <MaskedText text={state?.wordSelected} guessedLetters={guessedLetters} />
+          <MaskedText text={word} guessedLetters={guessedLetters} />
           <div>
       <LetterButtons
-        text={state?.wordSelected}
+        text={word}
         guessedLetters={guessedLetters}
         onLetterClick={handleLetterClick}
       />
