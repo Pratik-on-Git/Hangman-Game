@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom"
 import Button from "../components/Button/Button";
 import { useEffect } from "react";
-import { useContext } from "react";
-import WordContext from "../context/WordContext.js";
+import wordStore from "../store/WordStore.js";
 
 
 const Home = () => {
 
-    const { setWordList, setWord } = useContext(WordContext);
+    // const { setWord } = useContext(WordContext)
+    // Accessing the Zustand store to get the setWord action
+    const { setWordList, setWord } = wordStore();      // Accessing the Zustand store to get the setWordList action
+
 
     async function fetchWords() {
         // Fetch words from the API

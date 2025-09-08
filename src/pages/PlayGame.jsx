@@ -4,14 +4,14 @@ import React, { useState } from "react";
 import MaskedText from "../components/MaskedText/MaskedText";
 import LetterButtons from "../components/LetterButtons/LetterButtons";
 import HangMan from "../components/HangMan/HangMan";
-import { useContext } from "react";
-import WordContext from "../context/WordContext.js";
+import wordStore from "../store/WordStore.js";
 
 const PlayGame = () => {
   // const {state} = useLocation();
 
-  const { wordList, word } = useContext(WordContext);
+  // const { word } = useContext(WordContext);
 
+  const { wordList, word } = wordStore();
 
   const [guessedLetters, setGuessedLetters] = useState([]);
   const [step, setStep] = useState(0);
